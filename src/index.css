@@ -1,3 +1,46 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Manrope&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-size: 90%;
+	font-family: 'Manrope', sans-serif;
+	color: #5f6368;
+}
+
+.header {
+	height: auto;
+	padding: 1.1%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+.header-logo {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.header-logo img {
+	height: 50px;
+	margin-right: 20px;
+}
+
+.header-tag-selector {
+	flex: 1;
+}
+
+.header-logout {
+	margin-left: 20px;
+}
+
 .login-container {
 	background-repeat: no-repeat;
 	background-size: cover;

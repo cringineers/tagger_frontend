@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { Button, TextField } from '@mui/material';
 import { successNotification, errorNotification } from '../components/notification';
 import axios from 'axios';
-import "../css/login.css";
 
 export default function LoginForm({ setJWTToken }) {
 	const loginRef = useRef(null);
@@ -19,8 +18,8 @@ export default function LoginForm({ setJWTToken }) {
                     errorNotification('Неверный логин или пароль');
 				}
 				else {
-					console.log(error.response);
                     errorNotification('Что-то пошло не так!');
+					console.log(error.response);
 				}
 			});
 	};
