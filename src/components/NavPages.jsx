@@ -1,5 +1,6 @@
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
+import requestAndSetImages from "../helpers/requestImages";
 
 export default function NavPages({ props }) {
   let onNextClicked = () => {
@@ -7,27 +8,17 @@ export default function NavPages({ props }) {
     if (newPage >= props.state.max_page) {
       return;
     }
-    fetch(
-      process.env.REACT_APP_API_URL +
-        "/images?" +
-        new URLSearchParams({ page: newPage, size: 10 }),
-      {
-        method: "GET",
-        mode: "cors",
-      }
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        props.setState({
-          page: newPage,
-          data: data.images,
-          max_page: props.state.max_page,
-        });
-      });
 
+    console.log(props);
+
+    requestAndSetImages(
+      props.state,
+      props.setState,
+      props.selectedTags,
+      newPage,
+      10,
+      props.searchType
+    );
     console.log(`Next clicked! New page is ${props.state.page + 1}`);
   };
 
@@ -37,25 +28,14 @@ export default function NavPages({ props }) {
       return;
     }
 
-    fetch(
-      process.env.REACT_APP_API_URL +
-        "/images?" +
-        new URLSearchParams({ page: newPage, size: 10 }),
-      {
-        method: "GET",
-        mode: "cors",
-      }
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        props.setState({
-          page: newPage,
-          data: data.images,
-          max_page: props.state.max_page,
-        });
-      });
+    requestAndSetImages(
+      props.state,
+      props.setState,
+      props.selectedTags,
+      newPage,
+      10,
+      props.searchType
+    );
 
     console.log(`Prev clicked! New page is ${newPage}`);
   };

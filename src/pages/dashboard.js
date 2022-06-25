@@ -10,6 +10,9 @@ import axios from "axios";
 
 const Dashboard = () => {
   const [allTags, setAllTags] = useState([]);
+  const [searchType, setSearchType] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [images, setImages] = useState({ page: 0, data: [], max_page: 0 });
 
   // Load tags when dashboard loads
   useEffect(() => {
@@ -42,8 +45,21 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <Header allTags={allTags} />
-      <ImageGrid />
+      <Header
+        allTags={allTags}
+        images={images}
+        setImages={setImages}
+        selectedTags={selectedTags}
+        setSelectedTags={setSelectedTags}
+        searchType={searchType}
+        setSearchType={setSearchType}
+      />
+      <ImageGrid
+        images={images}
+        setImages={setImages}
+        selectedTags={selectedTags}
+        searchType={searchType}
+      />
     </div>
   );
 };

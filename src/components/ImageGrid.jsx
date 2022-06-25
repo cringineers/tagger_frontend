@@ -1,42 +1,29 @@
 import CardGrid from "./CardGrid";
 import NavPages from "./NavPages";
 import React, { useState, useEffect } from "react";
+import requestAndSetImages from "../helpers/requestImages";
 
 const imagesPerPage = 10;
 
-function ImageGrid() {
-  const [state, setState] = useState({ page: 0, data: [], max_page: 0 });
-
+function ImageGrid({ images, setImages, selectedTags, searchType }) {
   useEffect(() => {
-    fetch(
-      process.env.REACT_APP_API_URL +
-        "/images?" +
-        new URLSearchParams({ page: 0, size: imagesPerPage }),
-      {
-        method: "GET",
-        mode: "cors",
-      }
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        setState({
-          page: 0,
-          data: data.images,
-          max_page: Math.ceil(data.count / imagesPerPage),
-        });
-      });
+    requestAndSetImages(images, setImages, [], 0, imagesPerPage, null);
   }, []);
 
   return (
     <div className="album py-5 bg-light">
       <div className="container mx-auto" style={{ padding: "20px" }}>
-        <CardGrid props={{ state: state, setState: setState }} />
+        <CardGrid props={{ state: images, setState: setImages }} />
       </div>
       <div style={{ padding: "20px" }}>
-        <NavPages props={{ state: state, setState: setState }} />
+        <NavPages
+          props={{
+            state: images,
+            setState: setImages,
+            selectedTags,
+            searchType,
+          }}
+        />
       </div>
     </div>
   );
