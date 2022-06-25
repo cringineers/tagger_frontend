@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosRequest from "../api";
 
 export default function requestAndSetImages(
   images,
@@ -26,7 +26,7 @@ export default function requestAndSetImages(
     params.type = searchType;
   }
 
-  axios
+  axiosRequest
     .get(apiPath, {
       params: params,
     })

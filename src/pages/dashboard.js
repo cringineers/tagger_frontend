@@ -6,7 +6,7 @@ import {
 import Header from "../components/header";
 import ImageGrid from "../components/ImageGrid";
 // axios
-import axios from "axios";
+import axiosRequest from "../api";
 
 const Dashboard = () => {
   const [allTags, setAllTags] = useState([]);
@@ -34,7 +34,7 @@ const Dashboard = () => {
         .flat();
     };
 
-    axios
+    axiosRequest
       .get("/api/tag_groups")
       .then((res) => setAllTags(process_tags(res.data)))
       .catch(function (error) {
