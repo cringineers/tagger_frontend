@@ -33,6 +33,11 @@ body {
 	margin-right: 20px;
 }
 
+.header-search-type-selector {
+	min-width: 160px;
+	margin-right: 10px;
+}
+
 .header-tag-selector {
 	flex: 1;
 }
