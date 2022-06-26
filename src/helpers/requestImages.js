@@ -1,3 +1,4 @@
+import { successNotification, errorNotification } from "../components/notification";
 import axiosRequest from "../api";
 
 export default function requestAndSetImages(

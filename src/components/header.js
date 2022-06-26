@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@mui/material";
-import {
-  successNotification,
-  errorNotification,
-} from "../components/notification";
+import { successNotification, errorNotification } from "../components/notification";
 // react-select imports
 import Select from "react-select";
 import makeAnimated from "react-select/animated";

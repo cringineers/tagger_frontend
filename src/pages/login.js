@@ -1,10 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, TextField } from "@mui/material";
-import {
-  successNotification,
-  errorNotification,
-} from "../components/notification";
+import { successNotification, errorNotification } from "../components/notification";
 import axiosRequest from "../api";
 
 export default function LoginForm({ setJWTToken }) {
