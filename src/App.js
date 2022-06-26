@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { ReactNotifications } from 'react-notifications-component'
-import Login from './pages/login';
-import Dashboard from './pages/dashboard';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 import 'react-notifications-component/dist/theme.css'
 
 const theme = createTheme({

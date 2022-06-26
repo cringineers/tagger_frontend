@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import {
   successNotification,
   errorNotification,
-} from "../components/notification";
-import Header from "../components/header";
+} from "../helpers/notification";
+import Header from "../components/Header";
 import ImageGrid from "../components/ImageGrid";
 // axios
-import axiosRequest from "../api";
+import axiosRequest from "../helpers/api";
 
 const Dashboard = () => {
   const [allTags, setAllTags] = useState([]);
