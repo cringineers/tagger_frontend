@@ -37,8 +37,24 @@ export default function FileCard(props) {
   return (
     <Col>
       <Card style={{ width: "18rem" }}>
-        <Card.Img src={img} />
-        <Card.Title>{props.name}</Card.Title>
+        <Card.Img
+          src={img}
+          variant="thumbnail"
+          style={{
+            width: "100%",
+            height: "250px",
+            maxHeight: "250px",
+            objectFit: "cover",
+          }}
+        />
+        <Card.Title
+          style={{
+            margin: "1rem",
+            textAlign: "center",
+          }}
+        >
+          {props.name}
+        </Card.Title>
         <Accordion flush style={{ padding: "5px" }}>
           <Accordion.Item eventKey="0">
             <Accordion.Header>Теги</Accordion.Header>
