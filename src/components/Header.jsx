@@ -4,8 +4,6 @@ import { successNotification, errorNotification } from "../helpers/notification"
 // react-select imports
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
-// axios
-import axios from "axios";
 import requestAndSetImages from "../helpers/requestImages";
 
 const animatedComponents = makeAnimated();
@@ -21,8 +19,6 @@ const Header = ({
 }) => {
   const [selectableTags, setSelectableTags] = useState([]);
 
-  useEffect(() => setSelectableTags(allTags), [allTags]);
-
   // Load data on tag selector change
   useEffect(() => {
     // Make all tags selectable and return if no tags selected
@@ -32,19 +28,21 @@ const Header = ({
     }
 
     // Disable tags from the same group
-    let tagMask = new Array(allTags.length).fill(true);
-    selectedTags.forEach((selectedTag) => {
-      tagMask = allTags.map(
-        (tag, index) =>
-          (tag.groupId != selectedTag.groupId ||
-            tag.value === selectedTag.value) &&
-          tagMask[index]
-      );
-    });
-    setSelectableTags(allTags.filter((item, i) => tagMask[i]));
+    if (searchType == 'all') {
+      let tagMask = new Array(allTags.length).fill(true);
+      selectedTags.forEach((selectedTag) => {
+        tagMask = allTags.map(
+          (tag, index) =>
+            (tag.groupId != selectedTag.groupId ||
+              tag.value === selectedTag.value) &&
+            tagMask[index]
+        );
+      });
+      setSelectableTags(allTags.filter((item, i) => tagMask[i]));
+    }
 
     requestAndSetImages(images, setImages, selectedTags, 0, 10, searchType);
-  }, [selectedTags, searchType]);
+  }, [allTags, selectedTags, searchType]);
 
   const handleLogout = (e) => {};
 
@@ -56,10 +54,10 @@ const Header = ({
 
       <div className="header-search-type-selector">
         <Select
-          defaultValue={{ value: "any", label: "Пересечение" }}
+          defaultValue={{ value: "any", label: "Или" }}
           options={[
-            { value: "any", label: "Пересечение" },
-            { value: "all", label: "Объединение" },
+            { value: "any", label: "Или" },
+            { value: "all", label: "И" },
           ]}
           onChange={setSearchType}
         />

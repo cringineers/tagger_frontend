@@ -4,6 +4,7 @@ import {
   errorNotification,
 } from "../helpers/notification";
 import Header from "../components/Header";
+import Dropzone from "../components/Dropzone";
 import ImageGrid from "../components/ImageGrid";
 // axios
 import axiosRequest from "../helpers/api";
@@ -53,6 +54,12 @@ const Dashboard = () => {
         setSelectedTags={setSelectedTags}
         searchType={searchType}
         setSearchType={setSearchType}
+      />
+      <Dropzone
+        images={images}
+        setImages={setImages}
+        selectedTags={selectedTags}
+        searchType={searchType}
       />
       <ImageGrid
         images={images}
